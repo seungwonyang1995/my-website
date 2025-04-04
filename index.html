@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UT Membership</title>
+  <style>
+    /* 추천 폰트: Montserrat (제목) & Open Sans (본문) */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #fdf6f9;
+      padding: 40px;
+      color: #333;
+      position: relative;
+      overflow: hidden;
+      font-size: 16px;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+    }
+    /* 중앙 워터마크 효과: 브랜드 로고, 투명도를 0.1로 조정 */
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      background: url('brand.jpg') no-repeat center center;
+      background-size: contain;
+      opacity: 0.1;
+      z-index: 1;
+      pointer-events: none;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      position: relative;
+      z-index: 2;
+    }
+    .item {
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+    /* 마지막 .item에 가로줄 없애기 위해 별도 클래스 추가 */
+    .item.no-border {
+      border-bottom: none;
+    }
+    .title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* 이모지 대체 이미지 스타일 */
+    .emoji-icon {
+      height: 1em;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    .desc {
+      color: #555;
+      margin: 4px 0;
+    }
+    .highlight {
+      color: #ff4081;
+      font-weight: 600;
+    }
+    .price {
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+    .original {
+      text-decoration: line-through;
+      color: #aaa;
+      margin-right: 10px;
+    }
+    .discounted {
+      color: #e91e63;
+      font-weight: 700;
+    }
+    /* 컨테이너 내부 우측 하단에 들어갈 푸터 스타일 */
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+    .footer img {
+      height: 0.8em;
+      width: auto;
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>CUT Membership</h1>
+    <div class="item">
+      <div class="title">
+        <img src="kuromi.jpeg" class="emoji-icon" alt="Icon"> 첫 방문 2+1
+      </div>
+      <div class="desc">₩105,000 → <span class="discounted">₩70,000</span></div>
+    </div>
+    <div class="item">
+      <div class="title">
+        <img src="kuromi.jpeg" class="emoji-icon" alt="Icon"> 3회권
+      </div>
+      <div class="desc"><span class="highlight">5% 할인</span> + 두피 딥클렌징</div>
+      <div class="price"><span class="original">₩105,000</span> → <span class="discounted">₩99,750</span> (1회 ₩33,250)</div>
+    </div>
+    <div class="item">
+      <div class="title">
+        <img src="kuromi.jpeg" class="emoji-icon" alt="Icon"> 5회권
+      </div>
+      <div class="desc"><span class="highlight">10% 할인</span> + 모발 or 두피 수분케어</div>
+      <div class="price"><span class="original">₩175,000</span> → <span class="discounted">₩157,500</span> (1회 ₩31,500)</div>
+    </div>
+    <!-- 10회권 항목에 no-border 클래스를 추가 -->
+    <div class="item no-border">
+      <div class="title">
+        <img src="kuromi.jpeg" class="emoji-icon" alt="Icon"> 10회권
+      </div>
+      <div class="desc"><span class="highlight">15% 할인</span> + 유수분 밸런스 케어(모발+두피)</div>
+      <div class="price"><span class="original">₩350,000</span> → <span class="discounted">₩297,500</span> (1회 ₩29,750)</div>
+    </div>
+    <!-- 컨테이너 내부 우측 하단에 푸터 추가 -->
+    <div class="footer">
+      <img src="kuromi.jpeg" alt="Icon">
+      준오헤어&nbsp;
+      동탄타임테라스점&nbsp;
+      디자이너 소민
+    </div>
+  </div>
+</body>
+</html>
