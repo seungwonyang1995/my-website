@@ -11,24 +11,21 @@
     body {
       font-family: 'Open Sans', sans-serif;
       background: #fdf6f9;
-      padding: 20px;
+      padding: 40px;
       color: #333;
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;
       font-size: 16px;
-      margin: 0;
     }
     .container {
       position: relative;
       z-index: 2;
-      width: 100%;
       max-width: 600px;
       margin: 0 auto;
       background: white;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       padding: 30px;
-      box-sizing: border-box;
     }
     /* 중앙 워터마크 효과: 브랜드 로고, 투명도를 0.1로 조정 */
     .container::before {
@@ -37,8 +34,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
       background: url('brand.jpg') no-repeat center center;
       background-size: contain;
       opacity: 0.1;
@@ -50,7 +47,7 @@
       margin-bottom: 30px;
       font-size: 2.5rem;
       font-family: 'Montserrat', sans-serif;
-      color: #e91e63;
+      color: #333;
       position: relative;
       z-index: 2;
     }
@@ -60,6 +57,7 @@
       position: relative;
       z-index: 2;
     }
+    /* 마지막 .item에 가로줄 없애기 위해 별도 클래스 추가 */
     .item.no-border {
       border-bottom: none;
     }
@@ -70,7 +68,7 @@
     }
     /* 이모지 대체 이미지 스타일 */
     .emoji-icon {
-      height: 1em;
+      height: 1.5em;
       width: auto;
       vertical-align: middle;
       margin-right: 5px;
@@ -104,36 +102,20 @@
       font-size: 0.8rem;
       color: #555;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-end;
       z-index: 2;
     }
     .footer img {
-      height: 0.8em;
+      height: 1.5em;
       width: auto;
       vertical-align: middle;
       margin-right: 3px;
     }
-
-    /* 모바일 환경(최대 600px)에서의 조정 */
-    @media screen and (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .title {
-        font-size: 1.2rem;
-      }
-      .price {
-        font-size: 0.9rem;
-      }
-      /* 모바일에서는 푸터를 절대 위치에서 문서 흐름으로 변경 */
-      .footer {
-        position: static;
-        text-align: right;
-        margin-top: 20px;
-      }
+    /* 푸터 내 첫 줄 (준오헤어 동탄타임테라스점)와 두번째 줄 (디자이너 소민) 스타일 */
+    .footer .line {
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
@@ -160,6 +142,7 @@
       <div class="desc"><span class="highlight">10% 할인</span> + 모발 or 두피 수분케어</div>
       <div class="price"><span class="original">₩175,000</span> → <span class="discounted">₩157,500</span> (1회 ₩31,500)</div>
     </div>
+    <!-- 10회권 항목에 no-border 클래스를 추가 -->
     <div class="item no-border">
       <div class="title">
         <img src="kuromi.jpeg" class="emoji-icon" alt="Icon"> 10회권
@@ -169,10 +152,14 @@
     </div>
     <!-- 컨테이너 내부 우측 하단에 푸터 추가 -->
     <div class="footer">
-      <img src="kuromi.jpeg" alt="Icon">
-      준오헤어&nbsp;
-      동탄타임테라스점&nbsp;
-      디자이너 소민
+      <div class="line">
+        <img src="kuromi.jpeg" alt="Icon">
+        준오헤어&nbsp;
+        동탄타임테라스점
+      </div>
+      <div class="line">
+        디자이너 소민
+      </div>
     </div>
   </div>
 </body>
