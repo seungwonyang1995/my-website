@@ -8,21 +8,17 @@
     /* 기본 스무스 스크롤 */
     html { scroll-behavior: smooth; }
 
-    /* 로딩 애니메이션 스타일 */
+    /* 로딩 애니메이션 */
     #loader {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #fdf6f9;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: fixed; top:0; left:0; right:0; bottom:0;
+      background: #fdf6f9; z-index:9999;
+      display: flex; align-items:center; justify-content:center;
     }
     .spinner {
-      border: 8px solid #eee;
-      border-top: 8px solid #e91e63;
-      border-radius: 50%;
-      width: 60px; height: 60px;
+      border:8px solid #eee;
+      border-top:8px solid #e91e63;
+      border-radius:50%;
+      width:60px; height:60px;
       animation: spin 1s linear infinite;
     }
     @keyframes spin {
@@ -34,231 +30,174 @@
     body {
       font-family: 'Open Sans', sans-serif;
       background: #fdf6f9;
-      padding: 80px 20px 20px;
       margin: 0;
+      padding: 80px 20px 20px;
       color: #333;
       font-size: 16px;
     }
-    .page-wrapper { width: 100%; }
-
-    /* 공통 컨테이너 스타일 */
-    .container {
-      position: relative; z-index: 2;
-      width: 100%; max-width: 600px;
-      margin: 40px auto;
-      border-radius: 20px;
-      padding: 30px;
-      box-sizing: border-box;
-      overflow: hidden;
-      background: url('wood_texture.jpg') no-repeat center center;
-      background-size: cover;
-      border: 10px solid transparent;
-      border-image: url('wood_border.png') 30 round;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    .page-wrapper {
+      width:100%; max-width:600px; margin:0 auto;
     }
 
-    /* Regular Membership 섹션 */
+    /* 컨테이너 공통 */
+    .container {
+      position: relative; z-index:2;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius:20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 40px 0; padding:30px; overflow:hidden;
+    }
+
+    /* Regular Membership */
     .regular-section {
       background: linear-gradient(135deg,
         rgba(255,255,255,0.8),
         rgba(249,249,249,0.8)
       );
-      padding-bottom: 60px;
+      padding-bottom:60px;
     }
 
-    /* Premium Membership 섹션 */
+    /* Premium Membership */
     .premium-section {
-      overflow: visible;
       background: linear-gradient(135deg,
         rgba(255,255,255,0.8),
         rgba(255,248,240,0.8)
       );
-      border-top: 3px solid #d4af37;
+      border-top:3px solid #d4af37;
       box-shadow: 0 10px 30px rgba(212,175,55,0.3);
-      padding-top: 80px; /* 부채꼴 SVG 공간 확보 */
+      padding-top:80px; /* SVG 공간 확보 */
     }
 
-    /* 부채꼴(아치) 텍스트 */
+    /* Premium header */
+    .premium-header {
+      position:relative; width:fit-content;
+      margin:0 auto 20px;
+    }
+    .premium-header h2 {
+      font-size:1.8rem;
+      font-family:'Montserrat',sans-serif;
+      color:#d4af37;
+      font-style:italic;
+      text-align:center;
+      margin:0;
+    }
+
+    /* Arc 텍스트: h2 바로 위에 고정 */
     .anniversary-arc {
-    position: absolute;
-    top: 160px;    /* 원래 20px → 80px (값을 올릴수록 아래로 내려옵니다) */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 140%;
-    height: 100px;
-    overflow: visible;
-    z-index: 3;
+      position:absolute;
+      bottom:100%; left:50%;
+      transform: translateX(-50%) translateY(10px);
+      width:200px; height:80px;
+      overflow:visible; z-index:3;
     }
-    /* 모바일(폭 600px 이하)에서 arc 위치 조정 */
-    @media screen and (max-width: 600px) {
-        .anniversary-arc {
-        top: 160px;  /* 이 값을 조절하세요! (크면 더 아래로 내려감) */
-        }
-    }
-    .anniversary-arc textPath {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      fill: #black;
-      letter-spacing: 3px;
-      dominant-baseline: middle;
+    .anniversary-arc path { fill:none; }
+    .anniversary-arc text {
+      font-family:'Montserrat',sans-serif;
+      font-size:0.9rem;
+      fill:#d4af37;
+      letter-spacing:2px;
+      text-anchor:middle;
     }
 
-    /* 워터마크 로고 */
-    .container::before {
-      content: "";
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px; height: 400px;
-      background: url('brand.jpg') no-repeat center center;
-      background-size: contain;
-      opacity: 0.1;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      margin: 20px 0;
-      position: relative; z-index: 2;
-    }
-    .premium-section h2 {
-      color: #d4af37;
-      font-style: italic;
-      margin-top: 0;
-    }
-
-    /* 아이템 공통 */
+    /* 아이템 기본 */
     .item {
-      border-bottom: 1px solid #eee;
-      padding: 20px 0;
-      position: relative; z-index: 2;
-      opacity: 0;
-      transform: translateY(20px);
+      border-bottom:1px solid #eee;
+      padding:20px 0;
+      opacity:0; transform:translateY(20px);
       transition: opacity 0.6s ease-out,
                   transform 0.6s ease-out;
     }
     .item.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity:1; transform:translateY(0);
     }
-    .item.no-border { border-bottom: none; }
+    .item.no-border { border-bottom:none; }
+
     .title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
+      font-size:1.4rem;
+      font-weight:700;
+      font-family:'Montserrat',sans-serif;
     }
     .emoji-icon {
-      height: 1.5em;
-      vertical-align: middle;
-      margin-right: 5px;
+      display:inline-block; vertical-align:middle;
+      width:1.5em; height:1.5em; margin-right:5px;
+      animation: rotateIcon 4s linear infinite;
     }
-    .desc {
-      color: #555;
-      margin: 4px 0;
-      line-height: 1.5;
-    }
-    .highlight {
-      color: #ff4081;
-      font-weight: 600;
-    }
-    .price {
-      font-size: 1rem;
-      margin-top: 8px;
-    }
-    .original {
-      text-decoration: line-through;
-      color: #aaa;
-      margin-right: 10px;
-    }
-    .discounted {
-      color: #e91e63;
-      font-weight: 700;
-      font-size: 1.2rem;
+    @keyframes rotateIcon {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
-    /* 혜택 리스트 */
+    .desc {
+      color:#555; margin:4px 0; line-height:1.5;
+    }
+    .highlight {
+      color:#ff4081; font-weight:600;
+    }
+    .price {
+      font-size:1rem; margin-top:8px;
+    }
+    .original {
+      text-decoration:line-through; color:#aaa;
+      margin-right:10px;
+    }
+    .discounted {
+      color:#e91e63; font-weight:700; font-size:1.2rem;
+    }
+
     .benefits {
-      margin-top: 10px;
-      padding-left: 20px;
+      margin-top:10px; padding-left:20px;
     }
     .benefit {
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 10px;
-      opacity: 0;
-      transform: translateX(-10px);
+      display:flex; align-items:center;
+      font-size:1rem; color:#555;
+      margin-bottom:10px;
+      opacity:0; transform:translateX(-10px);
       transition: opacity 0.4s ease-out,
                   transform 0.4s ease-out;
     }
     .benefit.visible {
-      opacity: 1;
-      transform: translateX(0);
+      opacity:1; transform:translateX(0);
     }
 
-    /* 푸터 */
     .footer {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      font-size: 0.8rem;
-      color: #555;
-      z-index: 2;
-    }
-    .footer img {
-      height: 1.5em;
-      margin-right: 3px;
+      margin-top:20px; font-size:0.8rem;
+      color:#555; text-align:right;
     }
     .footer .line {
-      display: flex;
-      align-items: center;
+      display:inline-flex; align-items:center;
+      margin-left:10px;
+    }
+    .footer img {
+      width:1.5em; margin-right:5px;
     }
 
-    /* 호버 효과 */
     .item:hover {
-      transform: translateY(-5px);
+      transform:translateY(-5px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    .no-hover:hover {
-      transform: none;
-      box-shadow: none;
-    }
 
-    /* 반응형 */
-    @media screen and (max-width: 600px) {
-      .container {
-        padding: 20px;
+    /* 모바일 대응 */
+    @media (max-width:600px) {
+      .premium-header { margin-bottom:15px; }
+      .anniversary-arc {
+        width:160px; height:60px;
+        transform: translateX(-50%) translateY(8px);
       }
-      h2 {
-        font-size: 1.6rem;
-        margin: 30px 0 15px;
-      }
-      .title { font-size: 1.2rem; }
-      .price { font-size: 0.9rem; }
-      .footer {
-        position: static;
-        text-align: right;
-        margin-top: 20px;
+      .premium-header h2 {
+        font-size:1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 로딩 애니메이션 -->
   <div id="loader"><div class="spinner"></div></div>
-
   <div class="page-wrapper">
 
-    <!-- Regular Membership 섹션 -->
+    <!-- Regular Membership -->
     <div class="container regular-section">
       <h2>CUT Membership</h2>
+
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
@@ -268,6 +207,7 @@
           ₩105,000 → <span class="discounted">₩70,000</span>
         </div>
       </div>
+
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
@@ -277,10 +217,11 @@
           <span class="highlight">5% 할인</span> + 두피 딥클렌징
         </div>
         <div class="price">
-          <span class="original">₩105,000</span> → 
+          <span class="original">₩105,000</span> →
           <span class="discounted">₩99,750</span> (1회 ₩33,250)
         </div>
       </div>
+
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
@@ -290,10 +231,11 @@
           <span class="highlight">10% 할인</span> + 모발 or 두피 수분케어
         </div>
         <div class="price">
-          <span class="original">₩175,000</span> → 
+          <span class="original">₩175,000</span> →
           <span class="discounted">₩157,500</span> (1회 ₩31,500)
         </div>
       </div>
+
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
@@ -303,7 +245,7 @@
           <span class="highlight">15% 할인</span> + 유수분 밸런스 케어(모발+두피)
         </div>
         <div class="price">
-          <span class="original">₩350,000</span> → 
+          <span class="original">₩350,000</span> →
           <span class="discounted">₩297,500</span> (1회 ₩29,750)
         </div>
       </div>
@@ -317,21 +259,21 @@
       </div>
     </div>
 
-    <!-- Premium Membership 섹션 -->
+    <!-- Premium Membership -->
     <div class="container premium-section">
-      <!-- SVG 부채꼴 텍스트 -->
-      <svg class="anniversary-arc" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="arcPath" d="M50,100 A250,250 0 0,1 550,100" fill="none"/>
-        </defs>
-        <text text-anchor="middle">
-          <textPath xlink:href="#arcPath" startOffset="50%">
-            동탄타임테라스점 3주년 이벤트
-          </textPath>
-        </text>
-      </svg>
-
-      <h2>3rd Anniversary<br> Premium Membership</h2>
+      <div class="premium-header">
+        <svg class="anniversary-arc" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="arcPath" d="M50,100 A250,250 0 0,1 550,100"/>
+          </defs>
+          <text text-anchor="middle">
+            <textPath xlink:href="#arcPath" startOffset="50%">
+              동탄타임테라스점 3주년 이벤트
+            </textPath>
+          </text>
+        </svg>
+        <h2>3rd Anniversary<br>Premium Membership</h2>
+      </div>
 
       <div class="item">
         <div class="title">
@@ -340,13 +282,11 @@
         </div>
         <div class="benefits">
           <div class="benefit">
-            <span class="discounted">
-              멤버십 할인 + VVIP 추가 할인 15%
-            </span>
+            <span class="discounted">멤버십 할인 + VVIP 추가 할인 15%</span>
           </div>
-          <div class="benefit"><strong>- 10만원 시술 상품권 제공</strong></div>
-          <div class="benefit"><strong>- 케어 시술권 증정</strong></div>
-          <div class="benefit"><strong>- 2개의 제품 제공</strong></div>
+          <div class="benefit"><strong>10만원 시술 상품권 제공</strong></div>
+          <div class="benefit"><strong>케어 시술권 증정</strong></div>
+          <div class="benefit"><strong>2개의 제품 제공</strong></div>
         </div>
       </div>
 
@@ -356,14 +296,10 @@
           120만원권
         </div>
         <div class="benefits">
-          <div class="benefit">
-            <span class="discounted">
-              멤버십 할인 + VVIP 추가 할인 15%
-            </span>
-          </div>
-          <div class="benefit"><strong>- 5만원 상품권 증정</strong></div>
-          <div class="benefit"><strong>- 두피 스케일링권 증정</strong></div>
-          <div class="benefit"><strong>- 2개의 제품 제공</strong></div>
+          <div class="benefit"><span class="discounted">멤버십 할인 + VVIP 추가 할인 15%</span></div>
+          <div class="benefit"><strong>5만원 상품권 증정</strong></div>
+          <div class="benefit"><strong>두피 스케일링권 증정</strong></div>
+          <div class="benefit"><strong>2개의 제품 제공</strong></div>
         </div>
       </div>
 
@@ -373,13 +309,9 @@
           80만원권
         </div>
         <div class="benefits">
-          <div class="benefit">
-            <span class="discounted">
-              멤버십 할인 + VIP 추가 할인 10%
-            </span>
-          </div>
-          <div class="benefit"><strong>- 3만원 상품권 제공</strong></div>
-          <div class="benefit"><strong>- 1개의 제품 제공</strong></div>
+          <div class="benefit"><span class="discounted">멤버십 할인 + VIP 추가 할인 10%</span></div>
+          <div class="benefit"><strong>3만원 상품권 제공</strong></div>
+          <div class="benefit"><strong>1개의 제품 제공</strong></div>
         </div>
       </div>
 
@@ -389,17 +321,13 @@
           50만원권
         </div>
         <div class="benefits">
-          <div class="benefit">
-            <span class="discounted">
-              멤버십 할인 + 추가 할인 10%
-            </span>
-          </div>
-          <div class="benefit"><strong>- 1개의 제품 제공</strong></div>
+          <div class="benefit"><span class="discounted">멤버십 할인 + 추가 할인 10%</span></div>
+          <div class="benefit"><strong>1개의 제품 제공</strong></div>
         </div>
       </div>
 
-      <div class="item no-border no-hover" style="opacity:1; transform:none; transition:none;">
-        <div class="desc" style="text-align:center; font-weight:600; margin-top:20px;">
+      <div class="item no-border no-hover" style="opacity:1;transform:none;transition:none;">
+        <div class="desc" style="text-align:center;font-weight:600;margin-top:20px;">
           “앞으로도 고객님의 아름다움을 제가 책임지고 싶어요.<br>
           저와 함께 하시면서 다양한 VIP 혜택도 함께 누려보세요!”
         </div>
@@ -416,30 +344,31 @@
 
   </div>
 
-  <!-- html2canvas 스크립트 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
-    window.addEventListener("load", function() {
+    window.addEventListener("load", () => {
       const loader = document.getElementById("loader");
       loader.style.transition = "opacity 0.5s ease-out";
       loader.style.opacity = "0";
       setTimeout(() => loader.style.display = "none", 500);
     });
 
-    const items = document.querySelectorAll('.item:not(.no-hover)');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
+    document.querySelectorAll('.item').forEach(item => {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      io.observe(item);
+    });
 
-    window.addEventListener("load", function() {
-      const benefits = document.querySelectorAll('.premium-section .benefit');
-      benefits.forEach((b, i) => setTimeout(() => b.classList.add('visible'), 500 + i * 300));
+    window.addEventListener("load", () => {
+      document.querySelectorAll('.benefit').forEach((b,i) => {
+        setTimeout(() => b.classList.add('visible'), 500 + i*300);
+      });
     });
   </script>
 </body>
