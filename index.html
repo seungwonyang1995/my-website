@@ -9,7 +9,7 @@
     html { scroll-behavior: smooth; }
 
     /* 로딩 애니메이션 스타일 */
-    #loader {
+    #loader {ㅁ
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: #fdf6f9;
@@ -88,6 +88,12 @@
     height: 100px;
     overflow: visible;
     z-index: 3;
+    }
+    /* 모바일(폭 600px 이하)에서 arc 위치 조정 */
+    @media screen and (max-width: 600px) {
+    .anniversary-arc {
+        top: 220px;  /* 이 값을 조절하세요! (크면 더 아래로 내려감) */
+    }
     }
     .anniversary-arc textPath {
       font-family: 'Montserrat', sans-serif;
