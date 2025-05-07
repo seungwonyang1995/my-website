@@ -23,14 +23,12 @@
       border-top: 8px solid #e91e63;
       border-radius: 50%;
       width: 60px; height: 60px;
-      /* animation removed to stop rotation */
-      /* animation: spin 1s linear infinite; */
+      animation: spin 1s linear infinite;
     }
-    /* keyframes removed since spinner no longer rotates */
-    /* @keyframes spin {
+    @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-    } */
+    }
 
     /* 기본 스타일 */
     body {
@@ -82,19 +80,25 @@
 
     /* 부채꼴(아치) 텍스트 */
     .anniversary-arc {
-      position: absolute;
-      top: 160px;    /* 기본 위치 */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140%;
-      height: 100px;
-      overflow: visible;
-      z-index: 3;
+    position: absolute;
+    top: 160px;    /* 원래 20px → 80px (값을 올릴수록 아래로 내려옵니다) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140%;
+    height: 100px;
+    overflow: visible;
+    z-index: 3;
+    }
+    /* 모바일(폭 600px 이하)에서 arc 위치 조정 */
+    @media screen and (max-width: 600px) {
+        .anniversary-arc {
+        top: 160px;  /* 이 값을 조절하세요! (크면 더 아래로 내려감) */
+        }
     }
     .anniversary-arc textPath {
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
-      fill: #000;
+      fill: #black;
       letter-spacing: 3px;
       dominant-baseline: middle;
     }
@@ -150,7 +154,6 @@
       height: 1.5em;
       vertical-align: middle;
       margin-right: 5px;
-      animation: none !important; /* 이모지 애니메이션 비활성화 */
     }
     .desc {
       color: #555;
@@ -228,16 +231,10 @@
       box-shadow: none;
     }
 
-    /* 반응형 모바일 조정 */
+    /* 반응형 */
     @media screen and (max-width: 600px) {
-      .premium-section {
-        /* 위쪽 여백을 기본 80px에서 충분히 늘려줍니다 */
-        padding-top: 160px;
-        /* 아래쪽 여백도 약간 늘려주면 보기 좋습니다 */
-        padding-bottom: 40px;
-      }
       .container {
-        padding: 60px;
+        padding: 20px;
       }
       h2 {
         font-size: 1.6rem;
@@ -249,10 +246,6 @@
         position: static;
         text-align: right;
         margin-top: 20px;
-      }
-      /* 모바일에서 부채꼴 텍스트를 H2 위로 이동 */
-      .anniversary-arc {
-        top: 130px;
       }
     }
   </style>
@@ -278,40 +271,40 @@
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
-          3회권
+          10회권
         </div>
         <div class="desc">
           <span class="highlight">5% 할인</span> + 두피 딥클렌징
         </div>
         <div class="price">
-          <span class="original">₩105,000</span> → 
-          <span class="discounted">₩99,750</span> (1회 ₩33,250)
+          <span class="original">₩350,000</span> → 
+          <span class="discounted">₩332,500</span> (1회 ₩33,250)
         </div>
       </div>
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
-          5회권
+          15회권
         </div>
         <div class="desc">
           <span class="highlight">10% 할인</span> + 모발 or 두피 수분케어
         </div>
         <div class="price">
-          <span class="original">₩175,000</span> → 
-          <span class="discounted">₩157,500</span> (1회 ₩31,500)
+          <span class="original">₩525,000</span> → 
+          <span class="discounted">₩472,500</span> (1회 ₩31,500)
         </div>
       </div>
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
-          10회권
+          20회권
         </div>
         <div class="desc">
           <span class="highlight">15% 할인</span> + 유수분 밸런스 케어(모발+두피)
         </div>
         <div class="price">
-          <span class="original">₩350,000</span> → 
-          <span class="discounted">₩297,500</span> (1회 ₩29,750)
+          <span class="original">₩700,000</span> → 
+          <span class="discounted">₩595,500</span> (1회 ₩29,750)
         </div>
       </div>
 
@@ -404,7 +397,7 @@
           <div class="benefit"><strong>- 1개의 제품 제공</strong></div>
         </div>
       </div>
-      
+
       <div class="item">
         <div class="title">
           <img src="kuromi.jpeg" class="emoji-icon" alt="Icon">
@@ -418,6 +411,7 @@
           </div>
         </div>
       </div>
+
       <div class="item no-border no-hover" style="opacity:1; transform:none; transition:none;">
         <div class="desc" style="text-align:center; font-weight:600; margin-top:20px;">
           “앞으로도 고객님의 아름다움을 제가 책임지고 싶어요.<br>
